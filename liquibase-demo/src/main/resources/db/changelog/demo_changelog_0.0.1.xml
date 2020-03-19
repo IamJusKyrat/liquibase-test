@@ -7,7 +7,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
          http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd">
 
-    <changeSet id="add_user_table" author="iamjuskyrat">
+    <changeSet id="add_department_table" author="iamjuskyrat">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="department"/>
@@ -37,6 +37,9 @@
         </insert>
     </changeSet>
 
+    <changeSet id="wait_for_execution" author="iamjuskyrat">
+        <sql>SELECT SLEEP(30)</sql>
+    </changeSet>
 
     <changeSet id="add_edifecs_department" author="iamjuskyrat">
         <preConditions onFail="MARK_RAN">
