@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+
+    <changeSet id="add_asset_table" author="iamjuskyrat">
+        <createTable tableName="asset">
+            <column name="id" type="int"/>
+            <column name="name" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="test_rollback_table" author="iamjuskyrat">
+        <createTable tableName="test_table_rollback">
+            <column name="id" type="int"/>
+        </createTable>
+        <addColumn tableName="test_table_rollback">
+            <column name="name" type="varchar(255)"/>
+            <column name="passed" type="boolean"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="add_department_rows" author="iamjuskyrat">
+        <insert tableName="department">
+            <column name="id" value="2"/>
+            <column name="name" value="Edifecs 2"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <rollback>
+            <sql>DELETE FROM department where id = '2'</sql>
+        </rollback>
+    </changeSet>
+    <changeSet id="tag_database_0.0.2" author="iamjuskyrat">
+        <tagDatabase tag="v0.0.2"/>
+    </changeSet>
+</databaseChangeLog>
