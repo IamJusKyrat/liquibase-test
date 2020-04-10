@@ -1,0 +1,11 @@
+{
+    "field1" : {
+        "subField1" : "data",
+        "subField2" : "data2"
+    },
+    "field2" : "data3",
+    "field3" : {
+        "subField1" : "data4",
+        "subField2" : "data5"
+    }
+}

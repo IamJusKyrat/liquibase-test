@@ -23,4 +23,8 @@ public class Department {
 
     @Column(name = "active")
     private boolean isActive;
+
+
+    @Column(name = "json_Data", columnDefinition = "json")
+    private boolean jsonData;
 }

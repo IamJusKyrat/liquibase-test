@@ -23,6 +23,9 @@
             <column name="active" type="boolean" defaultValue="false">
                 <constraints nullable="false"/>
             </column>
+            <column name="json_data" type="json">
+                <constraints nullable="true"/>
+            </column>
         </createTable>
     </changeSet>
 
@@ -37,10 +40,6 @@
         </insert>
     </changeSet>
 
-    <changeSet id="wait_for_execution" author="iamjuskyrat">
-        <sql>SELECT SLEEP(30)</sql>
-    </changeSet>
-
     <changeSet id="add_edifecs_department" author="iamjuskyrat">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">SELECT count(*) from department where id='1'</sqlCheck>
@@ -49,6 +48,7 @@
             <column name="id" value="1"/>
             <column name="name" value="Edifecs"/>
             <column name="active" valueBoolean="true"/>
+            <column name="json_data" valueClobFile="\\data\\X12_Template.json"/>
         </insert>
     </changeSet>
 </databaseChangeLog>
